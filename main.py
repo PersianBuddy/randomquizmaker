@@ -32,10 +32,16 @@ for i in range(50):
     quiz_string+="\n\n"
     # write all answers
     answers_string += f'{i+1}- '+ 'ABCD'[answer_options.index(capitals[states[i]])] +"\n"
+# save quiz to a file
+quiz_file = open(f'.\\quiz\\quiz-{i+1}.txt','w')
+quiz_file.write(quiz_string)
+quiz_file.close()
+# save answers to answersheet file
+answersheet_file = open(f'.\\quiz\\answersheet-{i+1}.txt','w')
+answersheet_file.write(answers_string)
+answersheet_file.close()
 print(answers_string)
 # do these for 30 times
-# TODO: save answer for fist question in a dictionary
-# TODO: add qustion and answers to a string
 # TODO: save string of qustion and answers and answers into two files
 
 
