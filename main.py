@@ -11,37 +11,34 @@ for key in capitals.keys():
 quiz_string = ' '*20 + 'This is quiz number  1\n\n'
 # a string to save answers
 answers_string = 'This is answer sheet for quiz 1\n\n'
-for i in range(50):
-    # craete 4 answer choice fo each question
-    answer_options = [capitals[states[i]]]
-    while len(answer_options) < 4:
-        random_capital = random.choice(list(capitals.values()))
-        capital_exists = False
-        for  capital in answer_options:
-            if capital == random_capital:
-                capital_exists = True
-                continue
-        if  capital_exists == False:
-            answer_options.append(random_capital)
-    # shuffle answers so the answer always won't be the first one
-    random.shuffle(answer_options)
-    # write all qustions
-    quiz_string += str(i+1) + "- What is the capital of " + states[i] + ' ?\n'
-    for q in range(4):
-        quiz_string += 'ABCD'[q] + f': {answer_options[q]}\t'
-    quiz_string+="\n\n"
-    # write all answers
-    answers_string += f'{i+1}- '+ 'ABCD'[answer_options.index(capitals[states[i]])] +"\n"
-# save quiz to a file
-quiz_file = open(f'.\\quiz\\quiz-{i+1}.txt','w')
-quiz_file.write(quiz_string)
-quiz_file.close()
-# save answers to answersheet file
-answersheet_file = open(f'.\\quiz\\answersheet-{i+1}.txt','w')
-answersheet_file.write(answers_string)
-answersheet_file.close()
-print(answers_string)
-# do these for 30 times
-# TODO: save string of qustion and answers and answers into two files
-
-
+for j in range(30):
+    random.shuffle(states)
+    for i in range(50):
+        # craete 4 answer choice fo each question
+        answer_options = [capitals[states[i]]]
+        while len(answer_options) < 4:
+            random_capital = random.choice(list(capitals.values()))
+            capital_exists = False
+            for  capital in answer_options:
+                if capital == random_capital:
+                    capital_exists = True
+                    continue
+            if  capital_exists == False:
+                answer_options.append(random_capital)
+        # shuffle answers so the answer always won't be the first one
+        random.shuffle(answer_options)
+        # write all qustions
+        quiz_string += str(i+1) + "- What is the capital of " + states[i] + ' ?\n'
+        for q in range(4):
+            quiz_string += 'ABCD'[q] + f': {answer_options[q]}\t'
+        quiz_string+="\n\n"
+        # write all answers
+        answers_string += f'{i+1}- '+ 'ABCD'[answer_options.index(capitals[states[i]])] +"\n"
+    # save quiz to a file
+    quiz_file = open(f'.\\quiz\\quiz-{j+1}.txt','w')
+    quiz_file.write(quiz_string)
+    quiz_file.close()
+    # save answers to answersheet file
+    answersheet_file = open(f'.\\quiz\\answersheet-{j+1}.txt','w')
+    answersheet_file.write(answers_string)
+    answersheet_file.close()
