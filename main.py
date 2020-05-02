@@ -1,4 +1,4 @@
-import random
+import random, os
 # The quiz data. Keys are states and values are their capitals. 
 capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix', 'Arkansas': 'Little Rock', 'California': 'Sacramento' , 'Colorado': 'Denver', 'Connecticut': 'Hartford', 'Delaware': 'Dover', 'Florida': 'Tallahassee', 'Georgia': 'Atlanta', 'Hawaii': 'Honolulu', 'Idaho': 'Boise', 'Illinois': 'Springfield', 'Indiana': 'Indianapolis', 'Iowa': 'Des Moines', 'Kansas': 'Topeka', 'Kentucky': 'Frankfort', 'Louisiana': 'Baton Rouge', 'Maine': 'Augusta', 'Maryland': 'Annapolis', 'Massachusetts': 'Boston', 'Michigan': 'Lansing', 'Minnesota': 'Saint Paul', 'Mississippi': 'Jackson', 'Missouri': 'Jefferson City', 'Montana': 'Helena', 'Nebraska': 'Lincoln', 'Nevada': 'Carson City', 'New Hampshire': 'Concord', 'New Jersey': 'Trenton', 'New Mexico': 'Santa Fe', 'New York': 'Albany', 'North Carolina': 'Raleigh', 'North Dakota': 'Bismarck', 'Ohio': 'Columbus', 'Oklahoma': 'Oklahoma City', 'Oregon': 'Salem', 'Pennsylvania': 'Harrisburg', 'Rhode Island': 'Providence', 'South Carolina': 'Columbia', 'South Dakota': 'Pierre', 'Tennessee': 'Nashville', 'Texas': 'Austin', 'Utah': 'Salt Lake City', 'Vermont': 'Montpelier', 'Virginia': 'Richmond', 'Washington': 'Olympia', 'West Virginia': 'Charleston', 'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
 
@@ -35,10 +35,14 @@ for j in range(30):
         # write all answers
         answers_string += f'{i+1}- '+ 'ABCD'[answer_options.index(capitals[states[i]])] +"\n"
     # save quiz to a file
-    quiz_file = open(f'.\\quiz\\quiz-{j+1}.txt','w')
+    quiz_name = f'quiz-{j+1}.txt'
+    quiz_path = os.path.join('.','quiz', quiz_name)
+    quiz_file = open(quiz_path,'w')
     quiz_file.write(quiz_string)
     quiz_file.close()
     # save answers to answersheet file
-    answersheet_file = open(f'.\\quiz\\answersheet-{j+1}.txt','w')
+    answersheet_name = f'answersheet-{j+1}.txt'
+    answersheet_path = os.path.join('.','quiz', answersheet_name)
+    answersheet_file = open(answersheet_path,'w')
     answersheet_file.write(answers_string)
     answersheet_file.close()
