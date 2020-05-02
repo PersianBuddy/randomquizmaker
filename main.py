@@ -7,6 +7,8 @@ for key in capitals.keys():
     states.append(key)
     
 # TODO: Create 30 different random quiz
+# a string to save quiz qustions
+quiz_string = ' '*20 + 'This is quiz number  1\n\n'
 for i in range(50):
     # craete 4 answer choice fo each question
     answer_options = [capitals[states[i]]]
@@ -21,8 +23,11 @@ for i in range(50):
             answer_options.append(random_capital)
     # shuffle answers so the answer always won't be the first one
     random.shuffle(answer_options)
-
-print(answer_options)
+    quiz_string += str(i+1) + "- What is the capital of " + states[i] + ' ?\n'
+    for q in range(4):
+        quiz_string += 'ABCD'[q] + f': {answer_options[q]}\t'
+    quiz_string+="\n\n"
+print(quiz_string)
 # do these for 30 times
 # TODO: save answer for fist question in a dictionary
 # TODO: add qustion and answers to a string
